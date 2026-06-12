@@ -33,3 +33,7 @@ Thumbs.db
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# Personal prep docs (kept local, not published)
+docs/RESUME_BULLETS.md
+docs/INTERVIEW_PREP.md

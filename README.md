@@ -279,23 +279,9 @@ changes can be evaluated as a measurable regression test, not a guess.
 
 ---
 
-## Roadmap
-
-- [x] **Phase 1** — Classifier, summarizer, priority detector (structured output)
-- [x] **Phase 2** — Routing engine, LCEL pipeline, batching, few-shot prompting
-- [x] **Phase 3** — Embeddings, ChromaDB vector store, SQLite persistence, RAG-augmented triage
-- [x] **Phase 4** — LangGraph workflow, escalation branching, response-drafting agent
-- [x] **Phase 5** — FastAPI service, analytics, observability, evaluation, Docker
-- [x] **Bonus** — React storefront with "Raise a query" + customer email notifications
-- [x] **Phase 6** — Docs, system-design write-up, résumé/interview prep
-
----
-
 ## Documentation
 
 - [System design & scaling](docs/SYSTEM_DESIGN.md) — architecture, trade-offs, scaling to 10k tickets/min
-- [Interview prep](docs/INTERVIEW_PREP.md) — LLM/AI-engineer Q&A grounded in this project
-- [Résumé bullets](docs/RESUME_BULLETS.md) — ready-to-use project bullets
 
 ## Screenshots
 
