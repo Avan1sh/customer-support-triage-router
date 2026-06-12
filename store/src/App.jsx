@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const PRODUCTS = [
   { id: 1, name: 'Wireless Headphones', price: 129.99, emoji: '🎧', tag: 'Audio' },
@@ -65,6 +66,7 @@ export default function App() {
           <nav className="flex items-center gap-6 text-sm text-gray-600">
             <a className="hover:text-gray-900 hidden sm:inline" href="#">Shop</a>
             <a className="hover:text-gray-900 hidden sm:inline" href="#">Deals</a>
+            <Link to="/dashboard" className="hover:text-gray-900 hidden sm:inline">Dashboard</Link>
             <button
               onClick={() => setOpen(true)}
               className="rounded-lg bg-indigo-600 px-4 py-2 text-white font-medium hover:bg-indigo-700"
