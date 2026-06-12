@@ -1,0 +1,22 @@
+# One-command run:  docker compose up --build
+# Stop & keep data:  docker compose down
+# Stop & wipe data:  docker compose down -v
+
+services:
+  api:
+    build: .
+    ports:
+      - "8001:8000"          # host:container  -> http://localhost:8001
+                             # (host 8001 because something else may use 8000)
+    env_file:
+      - .env                 # injects GROQ_API_KEY etc. at RUNTIME (not baked in)
+    environment:
+      # Point storage at the mounted volume so data persists across restarts.
+      DATABASE_URL: "sqlite:////app/store/support.db"  # 4 slashes = absolute path
+      CHROMA_DIR: "/app/store/chroma_db"
+    volumes:
+      - store:/app/store     # named volume survives `docker compose down`
+    restart: unless-stopped
+
+volumes:
+  store:

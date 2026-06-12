@@ -1,0 +1,26 @@
+# Keep the build context small & secrets out of the image.
+# (Everything here is excluded from what's sent to the Docker daemon.)
+
+.venv/
+**/__pycache__/
+*.py[cod]
+
+# Secrets - NEVER bake .env into an image
+.env
+*.env
+!.env.example
+
+# Local data stores (the container uses a mounted volume instead)
+*.db
+*.sqlite3
+chroma_db/
+data/chroma/
+
+# Dev-only stuff not needed to run the service
+experiments/
+notebooks/
+tests/
+.git/
+.gitignore
+*.md
+requirements.lock.txt

@@ -1,0 +1,5 @@
+# Frontend deps are SEPARATE from the API's requirements.txt on purpose:
+# the API Docker image stays lean (no Streamlit/pandas), and the UI is its
+# own deployable. Install with:  pip install -r frontend/requirements.txt
+streamlit>=1.38.0
+requests>=2.31.0

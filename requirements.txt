@@ -1,0 +1,24 @@
+# Project dependencies — added phase by phase.
+# Floors (>=) let pip resolve the latest compatible versions.
+# After a successful install we LOCK exact versions with:  pip freeze > requirements.lock.txt
+
+# Phase 1 - core LLM + structured output
+langchain-core>=0.3.0
+langchain-groq>=0.2.0
+python-dotenv>=1.0.0
+pydantic>=2.7.0
+
+# Phase 3 - embeddings & vector store
+langchain-huggingface>=0.1.0
+sentence-transformers>=3.0.0
+chromadb>=0.5.0
+langchain-chroma>=0.1.0
+
+# Phase 3 - relational persistence
+SQLAlchemy>=2.0.0
+
+# Phase 4 - multi-agent / stateful workflows
+langgraph>=0.2.0
+
+# Phase 5 - API / deployment
+fastapi[standard]>=0.115.0

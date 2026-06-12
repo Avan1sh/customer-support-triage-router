@@ -1,0 +1,18 @@
+{"text": "I was charged twice for my subscription this month.", "category": "Billing", "priority": "High"}
+{"text": "The mobile app crashes every time I try to upload a photo.", "category": "Technical", "priority": "High"}
+{"text": "How do I change the email address on my account?", "category": "Account", "priority": "Low"}
+{"text": "Please consider adding a calendar view for scheduling tasks.", "category": "Feature Request", "priority": "Low"}
+{"text": "I have contacted support five separate times and nobody has resolved my issue. Extremely disappointed.", "category": "Complaint", "priority": "High"}
+{"text": "My card was declined but I was still charged. I need a refund urgently.", "category": "Billing", "priority": "High"}
+{"text": "The entire website has been down for over an hour and I cannot access anything.", "category": "Technical", "priority": "Critical"}
+{"text": "Can you reset my password? I am locked out of my account completely.", "category": "Account", "priority": "Medium"}
+{"text": "It would help if you supported exporting reports to PDF.", "category": "Feature Request", "priority": "Low"}
+{"text": "Your service is the worst I have ever used and I am telling everyone to avoid it.", "category": "Complaint", "priority": "Medium"}
+{"text": "I upgraded to the premium plan but I am still being billed the basic rate.", "category": "Billing", "priority": "Medium"}
+{"text": "Two-factor authentication codes never arrive on my phone, so I cannot log in.", "category": "Technical", "priority": "High"}
+{"text": "I would like to permanently delete my account and all of my data.", "category": "Account", "priority": "Medium"}
+{"text": "A bulk import feature would save our team hours of manual work every week.", "category": "Feature Request", "priority": "Low"}
+{"text": "This is the third outage this month and it is completely unacceptable for what we pay.", "category": "Complaint", "priority": "High"}
+{"text": "I cancelled my plan last month but was charged again today.", "category": "Billing", "priority": "High"}
+{"text": "The dashboard loads extremely slowly, often taking over 30 seconds.", "category": "Technical", "priority": "Medium"}
+{"text": "How do I add another team member to my workspace?", "category": "Account", "priority": "Low"}
