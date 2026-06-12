@@ -55,6 +55,28 @@ Salesforce Einstein.
 
 ## Architecture (current)
 
+```mermaid
+flowchart TD
+    UI["Storefront (React + Vite)"] -->|POST /tickets| API["FastAPI service"]
+    API --> T["triage (RAG)"]
+    T <-->|retrieve precedent| V[("ChromaDB vector index")]
+    T --> E{"escalate?"}
+    E -->|yes| H["senior queue + tighter SLA"]
+    E -->|no| R["route to team + SLA"]
+    H --> P["persist"]
+    R --> P
+    P --> DB[("SQLite system of record")]
+    P -->|re-index| V
+    P --> DR{"draft reply?"}
+    DR -->|normal| D["AI draft reply"]
+    DR -->|escalated| Z["human handles it"]
+    API -->|background task| MAIL["Email customer (SMTP)"]
+    DB --> AN["GET /analytics"]
+```
+
+<details>
+<summary>Text version of the triage flow</summary>
+
 ```
                          new ticket text
                               │
@@ -77,7 +99,11 @@ Salesforce Einstein.
                                                    future tickets)
 ```
 
-`app/service.py::process_ticket()` orchestrates the whole flow.
+</details>
+
+The LangGraph workflow in `app/graph.py` orchestrates the flow; the API invokes
+it via `app/observability/runner.py::run_triage()`, which adds latency and
+token-cost logging.
 
 ---
 
@@ -258,9 +284,36 @@ changes can be evaluated as a measurable regression test, not a guess.
 - [x] **Phase 1** — Classifier, summarizer, priority detector (structured output)
 - [x] **Phase 2** — Routing engine, LCEL pipeline, batching, few-shot prompting
 - [x] **Phase 3** — Embeddings, ChromaDB vector store, SQLite persistence, RAG-augmented triage
-- [x] **Phase 4** — LangGraph workflow, escalation branching, response-drafting agent *(analytics next)*
+- [x] **Phase 4** — LangGraph workflow, escalation branching, response-drafting agent
 - [x] **Phase 5** — FastAPI service, analytics, observability, evaluation, Docker
-- [ ] **Phase 6** — Docs, system-design write-up, polish
+- [x] **Bonus** — React storefront with "Raise a query" + customer email notifications
+- [x] **Phase 6** — Docs, system-design write-up, résumé/interview prep
+
+---
+
+## Documentation
+
+- [System design & scaling](docs/SYSTEM_DESIGN.md) — architecture, trade-offs, scaling to 10k tickets/min
+- [Interview prep](docs/INTERVIEW_PREP.md) — LLM/AI-engineer Q&A grounded in this project
+- [Résumé bullets](docs/RESUME_BULLETS.md) — ready-to-use project bullets
+
+## Screenshots
+
+<!-- Capture these from the running app and drop them in docs/screenshots/ —
+     they'll render here automatically once committed:
+![Storefront — raise a query](docs/screenshots/store.png)
+![Interactive API docs (Swagger)](docs/screenshots/swagger.png)
+![Evaluation scorecard](docs/screenshots/eval.png)
+-->
+
+Run the storefront (`npm run dev` in `store/`) and the API to see the live
+triage flow, or open the auto-generated API docs at `/docs`.
+
+---
+
+## License
+
+[MIT](LICENSE)
 
 ---
 
